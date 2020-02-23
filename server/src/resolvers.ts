@@ -3,7 +3,7 @@ import * as bcrypt from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 import { User } from "./entity/User";
-import { ACCESS_TOKEN_SECRET, /*REFRESH_TOKEN_SECRET,*/ EXPIRES_IN } from "./config/auth";
+import { ACCESS_TOKEN_SECRET, EXPIRES_IN } from "./config/auth";
 
 interface iUser {
   token?: string

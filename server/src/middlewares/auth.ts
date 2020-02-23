@@ -10,7 +10,7 @@ export default async (req: any, res: any, next: any) => {
     (req as any).userId = data.userId;
     
   } catch(err) {
-    //console.log('')
+    console.log('g')
   }
   
   next();
