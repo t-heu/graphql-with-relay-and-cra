@@ -1,38 +1,14 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import {
-  graphql,
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
-} from 'graphql'
 import { makeExecutableSchema } from "graphql-tools"
-
-/*
-var schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'Query',
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return 'world';
-        },
-      },
-    },
-  }),
-});*/
+import { graphql } from 'graphql'
 
 import { typeDefs } from "../../src/typeDefs";
-import { resolvers } from "../../src/resolvers";
+import { resolvers } from "../../src/modules";
+
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers
-  /*: {
-    Mutation: {
-      register: (root, args) => true//({ email: "Ada", password: "Lovelace" })
-    }
-  }*/
 });
 
 describe("rotas", () => {
@@ -46,18 +22,36 @@ describe("rotas", () => {
     //await User.deleteMany({})
   })
 
-  it("POST", async () => {
-    const email = 'jhon@'
-    const password = 'boboIsMyPsswrd'
+  it("user correct register", async () => {
+    const email = 'jggg@gmail.com'
+    const password = '1245'
     
     const mutation = `
       mutation {
-        register(email: "jggg@gmail.com", password: "1245")
+        register(email: "${email}", password: "${password}")
       }
     `
     
     const res = await graphql(schema, mutation, {}, { email, password })
-    console.log(res)
-    expect(res.data.register).toBe(true)//toMatchObject({ })
+    
+    expect(res.errors[0].message).toBe('user exist')//toMatchObject({ })
+  })
+  
+  it("password wrong", async () => {
+    const email = 'jggg@gmail.com'
+    const password = '124'
+    
+    const mutation = `
+      mutation {
+        login(email: "${email}", password: "${password}") {
+          token
+          email
+        }
+      }
+    `
+    
+    const res = await graphql(schema, mutation, {}, { email, password })
+    
+    expect(res.errors[0].message).toBe('password wrong')
   })
 })
