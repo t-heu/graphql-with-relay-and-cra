@@ -9,8 +9,9 @@ import { resolvers } from "../../src/modules";
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers
-});
+})
 
+// teste de integração de auto nível
 describe("rotas", () => {
   beforeAll(async () => {
     await createConnection();
@@ -22,8 +23,8 @@ describe("rotas", () => {
     //await User.deleteMany({})
   })
 
-  it("user correct register", async () => {
-    const email = 'jggg@gmail.com'
+  it("user exist", async () => {
+    const email = 'math@gmail.com'
     const password = '1245'
     
     const mutation = `
@@ -38,8 +39,8 @@ describe("rotas", () => {
   })
   
   it("password wrong", async () => {
-    const email = 'jggg@gmail.com'
-    const password = '124'
+    const email = 'math@gmail.com'
+    const password = '1234'
     
     const mutation = `
       mutation {
