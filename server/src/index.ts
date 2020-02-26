@@ -7,6 +7,7 @@ import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
 import * as express from "express";
 import * as helmet from "helmet"
+import * as cors from "cors"
 import * as cookieParser from "cookie-parser";
 
 import { typeDefs } from "./typeDefs";
@@ -34,11 +35,12 @@ class App {
   }
   
   private middlewares(): void {
+    this.express.use(cors())
     this.express.use(helmet())
-  this.express.use(cookieParser())
-  this.express.use(auth)
+    this.express.use(cookieParser())
+    this.express.use(auth)
 
-  this.server.applyMiddleware({ app: this.express });
+    this.server.applyMiddleware({ app: this.express });
   }
 };
 
