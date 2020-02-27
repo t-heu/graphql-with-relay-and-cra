@@ -1,30 +1,33 @@
 {
-  "name": "tps",
+  "name": "relay-cra",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
+    "babel-plugin-relay": "^9.0.0",
+    "graphql": "^14.6.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-relay": "^9.0.0",
+    "react-scripts": "3.4.0",
+    "relay-compiler": "^9.0.0",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
     "@types/node": "^12.12.27",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "axios": "^0.19.2",
-    "babel-plugin-relay": "^9.0.0",
-    "module-alias": "^2.2.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-relay": "^9.0.0",
-    "react-scripts": "3.4.0",
-    "relay-runtime": "^9.0.0",
-    "typescript": "^3.7.5"
+    "@types/react-relay": "^7.0.3",
+    "@types/relay-runtime": "^8.0.6",
+    "graphql-compiler": "^1.7.0",
+    "relay-compiler-language-typescript": "^12.0.0"
   },
   "scripts": {
-    "relay": "curl https://graphql-demo.kriasoft.com/schema -o ./src/graphql.schema && relay-compiler --src ./src --schema ./src/graphql.schema",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "relay": "relay-compiler --src ./src --schema scripts/schema.graphql --language typescript --artifactDirectory ./src/__generated__",
+    "fetch": "node scripts/getSchema.js",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -41,11 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/react-relay": "^7.0.3",
-    "@types/relay-runtime": "^8.0.6",
-    "relay-compiler": "^9.0.0"
   }
 }
