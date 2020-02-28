@@ -22,6 +22,21 @@ describe("rotas", () => {
   beforeEach(async () => {
     //await User.deleteMany({})
   })
+  
+  it("create registre", async () => {
+    const email = 'mthg@gmail.com'
+    const password = '1245'
+  
+    const mutation = `
+        mutation {
+          register(email: "${email}", password: "${password}")
+        }
+      `
+  
+    const res = await graphql(schema, mutation, {}, { email, password })
+    
+    expect(res.data.register).toBe(true) //toMatchObject({ })
+  })
 
   it("user exist", async () => {
     const email = 'math@gmail.com'

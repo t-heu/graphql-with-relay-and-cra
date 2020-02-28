@@ -1,24 +1,24 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash bc6dbb9c17419663df4a7aba681f98e0 */
+/* @relayHash fded14c8f46248ef1ac1b87d5425f9d6 */
 
 import { ConcreteRequest } from "relay-runtime";
-export type AaMutationVariables = {
+export type SignUpMutationVariables = {
     ggmail: string;
     ggpass: string;
 };
-export type AaMutationResponse = {
+export type SignUpMutationResponse = {
     readonly register: boolean;
 };
-export type AaMutation = {
-    readonly response: AaMutationResponse;
-    readonly variables: AaMutationVariables;
+export type SignUpMutation = {
+    readonly response: SignUpMutationResponse;
+    readonly variables: SignUpMutationVariables;
 };
 
 
 
 /*
-mutation AaMutation(
+mutation SignUpMutation(
   $ggmail: String!
   $ggpass: String!
 ) {
@@ -65,7 +65,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AaMutation",
+    "name": "SignUpMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -73,18 +73,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AaMutation",
+    "name": "SignUpMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "mutation",
-    "name": "AaMutation",
+    "name": "SignUpMutation",
     "id": null,
-    "text": "mutation AaMutation(\n  $ggmail: String!\n  $ggpass: String!\n) {\n  register(email: $ggmail, password: $ggpass)\n}\n",
+    "text": "mutation SignUpMutation(\n  $ggmail: String!\n  $ggpass: String!\n) {\n  register(email: $ggmail, password: $ggpass)\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'f522e047a5ff8c2d3c40b86911fcc9ec';
+(node as any).hash = 'f392998d03b8dfc573fd32e40dcbaf03';
 export default node;
