@@ -12,7 +12,7 @@ interface iUser {
 class UserModule {
   async me(_, __, { req }) {
     if (!req.userId) {
-      return null;
+      throw new Error('You are not authenticated!')
     }
 
     return await User.findOne(req.userId);

@@ -12,7 +12,7 @@ import * as cookieParser from "cookie-parser";
 
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./modules";
-//import auth from './middlewares/auth'
+import auth from './middlewares/auth'
 
 class App {
   public express: express.Application
@@ -38,7 +38,8 @@ class App {
     this.express.use(cors())
     this.express.use(helmet())
     this.express.use(cookieParser())
-    //this.express.use(auth)
+    this.express.use(express.json())
+    this.express.use(auth)
 
     this.server.applyMiddleware({ app: this.express });
   }
