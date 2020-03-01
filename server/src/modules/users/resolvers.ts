@@ -1,6 +1,19 @@
 import * as bcrypt from "bcryptjs";
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Arg,
+  ObjectType,
+  Field,
+  Ctx,
+  UseMiddleware,
+  Int
+} from "type-graphql";
 
 import { User } from "../../entity/User";
+import auth from "../../middlewares/auth"
+import { MyContext } from "../../MyContext"
 
 interface iUser {
   token?: string
@@ -9,16 +22,37 @@ interface iUser {
   id?: number
 }
 
-class UserModule {
-  async me(_, __, { req }) {
-    if (!req.userId) {
-      throw new Error('You are not authenticated!')
-    }
+@ObjectType()
+class Recipe {
+  @Field()
+  token: string;
+  
+  @Field()
+  count: number;
+  
+  @Field()
+  id: number;
+  
+  @Field()
+  email: string;
+  
+  @Field()
+  password: string
+  
+  //@Field(() => User)
+  //User
+}
 
-    return await User.findOne(req.userId);
+@Resolver()
+class UserModule {
+  @Query(returns => Recipe, { nullable: true })
+  @UseMiddleware(auth)
+  async me(@Ctx() { req }: MyContext) {
+    
+    return await User.findOne(req.userId)
   }
   
-  async register(_, { email, password }) {
+  /*async register(_, { email, password }) {
     const user = await <iUser>User.findOne({ where: { email } });
       
     if (user) {
@@ -33,7 +67,7 @@ class UserModule {
     }).save();
 
     return true;
-  }
+  }*/
     
   /*async update(_, {}, { res }) {
   
@@ -46,4 +80,4 @@ class UserModule {
   }*/
 };
 
-export default new UserModule()
+export default UserModule //new UserModule()
