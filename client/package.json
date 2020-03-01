@@ -10,7 +10,6 @@
     "react-relay": "^9.0.0",
     "react-scripts": "3.4.0",
     "relay-compiler": "^9.0.0",
-    "subscriptions-transport-ws": "^0.9.16",
     "typescript": "^3.7.5"
   },
   "devDependencies": {

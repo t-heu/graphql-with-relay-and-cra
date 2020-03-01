@@ -1,7 +1,6 @@
 import React from 'react'
 
-//import SignUp from './SignUp'
-import Dash from './Dash'
+import Dash from './pages/Dash'
 
 function App() {
   return (

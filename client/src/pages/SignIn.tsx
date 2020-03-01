@@ -1,9 +1,11 @@
-import React from 'react';
-import { graphql } from "babel-plugin-relay/macro";
+import React from 'react'
+//import { graphql } from "babel-plugin-relay/macro";
 import { QueryRenderer } from 'react-relay'
 
-import environment from './Environment'
+import environment from '../Environment'
+import { SignInMutation } from '../TypeQuery'
 
+/*
 const query = graphql`
   mutation SignInMutation ($ggmail: String!, $ggpass: String!) {
     login(email: $ggmail, password: $ggpass) {
@@ -11,7 +13,7 @@ const query = graphql`
       token
     }
   }
-`;
+`;*/
 
 const data = {
   ggmail: 'dd',
@@ -36,14 +38,14 @@ export function SignIn(props: any) {
 export default () => (
   <QueryRenderer
     environment={environment}
-    query={query}
+    query={SignInMutation}
     variables={data}
     render={({error, props}) => {
-      
+
       if(error) {
         return <h5>{error.message}</h5>
       }
-      
+
       if (!props) {
         return ( <p>Loading...</p> );
       }
@@ -53,4 +55,4 @@ export default () => (
       );
     }}
   />
-);
+)
