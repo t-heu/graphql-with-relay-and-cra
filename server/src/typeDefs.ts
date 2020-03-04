@@ -11,7 +11,7 @@ export const typeDefs = gql`
   type Query {
     me: User
   }
-
+  
   type Mutation {
     register(email: String!, password: String!): Boolean!
     login(email: String!, password: String!): User
@@ -19,3 +19,11 @@ export const typeDefs = gql`
     deleteUser(id: ID!): Boolean
   }
 `;
+
+/*
+fragmento so funciona em graphiql(playground) ele server como uma forma de evitar repetições em blocos
+fragment Dash on User {
+  email
+  id
+}
+*/

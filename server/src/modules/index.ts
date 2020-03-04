@@ -5,9 +5,9 @@ import { IResolvers } from "graphql-tools";
 
 export const resolvers: IResolvers = {
   Query: {
-    me: UserModule.me
+    me: UserModule.me,
   },
-    
+  
   Mutation: {
     register: UserModule.register,
     login: SessionModule.login

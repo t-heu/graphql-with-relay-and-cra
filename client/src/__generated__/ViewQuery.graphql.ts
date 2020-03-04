@@ -1,43 +1,41 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 25c4ffdc9fea13c82f22a731c62dd3eb */
+/* @relayHash 3ce331c9a621b2d9699972a6a25cebda */
 
 import { ConcreteRequest } from "relay-runtime";
-export type DashQueryVariables = {};
-export type DashQueryResponse = {
+import { FragmentRefs } from "relay-runtime";
+export type ViewQueryVariables = {};
+export type ViewQueryResponse = {
     readonly me: {
-        readonly email: string;
+        readonly " $fragmentRefs": FragmentRefs<"Dash_user">;
     } | null;
 };
-export type DashQuery = {
-    readonly response: DashQueryResponse;
-    readonly variables: DashQueryVariables;
+export type ViewQuery = {
+    readonly response: ViewQueryResponse;
+    readonly variables: ViewQueryVariables;
 };
 
 
 
 /*
-query DashQuery {
+query ViewQuery {
   me {
-    email
+    ...Dash_user
     id
   }
 }
+
+fragment Dash_user on User {
+  email
+  id
+}
 */
 
-const node: ConcreteRequest = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "email",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteRequest = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "DashQuery",
+    "name": "ViewQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -51,14 +49,18 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          (v0/*: any*/)
+          {
+            "kind": "FragmentSpread",
+            "name": "Dash_user",
+            "args": null
+          }
         ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "DashQuery",
+    "name": "ViewQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -70,7 +72,13 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "email",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -84,12 +92,11 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "DashQuery",
+    "name": "ViewQuery",
     "id": null,
-    "text": "query DashQuery {\n  me {\n    email\n    id\n  }\n}\n",
+    "text": "query ViewQuery {\n  me {\n    ...Dash_user\n    id\n  }\n}\n\nfragment Dash_user on User {\n  email\n  id\n}\n",
     "metadata": {}
   }
 };
-})();
-(node as any).hash = 'efae8fc881ed3e934e26fe8982195ed8';
+(node as any).hash = '0536f30650471dcd8f6b834671e91c29';
 export default node;

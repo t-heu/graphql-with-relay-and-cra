@@ -5,7 +5,7 @@ dotenv.config({
 })*/
 import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
-import { buildSchema } from "type-graphql"
+//import { buildSchema } from "type-graphql"
 import * as express from "express";
 import * as helmet from "helmet"
 import * as cors from "cors"
@@ -14,7 +14,7 @@ import * as cookieParser from "cookie-parser";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./modules";
 import UserModule from "./modules/users/resolvers"
-import auth from './middlewares/auth'
+//import auth from './middlewares/auth'
 
 class App {
   public express: express.Application
@@ -27,7 +27,7 @@ class App {
     this.middlewares()
   }
   
-  async init(): Promise<any> {
+  /*async init(): Promise<any> {
     const ap = new ApolloServer({
       typeDefs,
       schema: await buildSchema({
@@ -37,7 +37,7 @@ class App {
     })
     
     return ap
-  }
+  }*/
   
   private async conect(): Promise<any> {
     await createConnection();
@@ -52,10 +52,10 @@ class App {
 
     //this.server
     const ap = new ApolloServer({
-      //typeDefs,
-      schema: await buildSchema({
-        resolvers: [UserModule]
-      }),
+      typeDefs,
+      //schema: await buildSchema({
+      resolvers,
+      
       context: ({ req, res }: any) => ({ req, res })
     })
  

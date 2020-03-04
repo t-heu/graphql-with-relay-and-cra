@@ -1,5 +1,5 @@
 import * as bcrypt from "bcryptjs";
-import {
+/*import {
   Resolver,
   Query,
   Mutation,
@@ -9,11 +9,11 @@ import {
   Ctx,
   UseMiddleware,
   Int
-} from "type-graphql";
+} from "type-graphql";*/
 
 import { User } from "../../entity/User";
 import auth from "../../middlewares/auth"
-import { MyContext } from "../../MyContext"
+//import { MyContext } from "../../MyContext"
 
 interface iUser {
   token?: string
@@ -21,7 +21,7 @@ interface iUser {
   count?: number
   id?: number
 }
-
+/*
 @ObjectType()
 class Recipe {
   @Field()
@@ -41,18 +41,18 @@ class Recipe {
   
   //@Field(() => User)
   //User
-}
+}*/
 
-@Resolver()
+//@Resolver()
 class UserModule {
-  @Query(returns => Recipe, { nullable: true })
-  @UseMiddleware(auth)
-  async me(@Ctx() { req }: MyContext) {
-    
-    return await User.findOne(req.userId)
+  //@Query(returns => Recipe, { nullable: true })
+  //@UseMiddleware(auth)
+  async me(_, { req }) {
+    //req.userId = 1
+    return await User.findOne(1)
   }
   
-  /*async register(_, { email, password }) {
+  async register(_, { email, password }) {
     const user = await <iUser>User.findOne({ where: { email } });
       
     if (user) {
@@ -67,7 +67,7 @@ class UserModule {
     }).save();
 
     return true;
-  }*/
+  }
     
   /*async update(_, {}, { res }) {
   
@@ -80,4 +80,4 @@ class UserModule {
   }*/
 };
 
-export default UserModule //new UserModule()
+export default new UserModule()

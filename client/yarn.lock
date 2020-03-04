@@ -1099,6 +1099,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@restart/hooks@^0.3.1":
+  version "0.3.21"
+  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.3.21.tgz#5264d12019ffb844dc1fc44d55517ded7b580ee2"
+  integrity sha512-Wcu3CFJV+iiqPEIoPVx3/CYnZBRgPeRABo6bLJByRH9ptJXyObn7WYPG7Rv0cg3+55bqcBbG0xEfovzwE2PNXg==
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -8651,6 +8656,14 @@ relay-compiler@^9.0.0:
     relay-runtime "9.0.0"
     signedsource "^1.0.0"
     yargs "^14.2.0"
+
+relay-hooks@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/relay-hooks/-/relay-hooks-3.1.0.tgz#c3cc8b2ca2fa6790736386dfcb90f189cc28b874"
+  integrity sha512-KM03t2uFmch5d42M732T9gtrtq6nULmikOIoRp1AzBfvURkEKsNUo4N7ykjDoKSNSTnNO/5AeszEeUNKDfsDhw==
+  dependencies:
+    "@restart/hooks" "^0.3.1"
+    fbjs "^1.0.0"
 
 relay-runtime@9.0.0:
   version "9.0.0"
