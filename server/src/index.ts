@@ -14,7 +14,7 @@ import * as cookieParser from "cookie-parser";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./modules";
 import UserModule from "./modules/users/resolvers"
-//import auth from './middlewares/auth'
+import auth from './middlewares/auth'
 
 class App {
   public express: express.Application
@@ -48,14 +48,13 @@ class App {
     this.express.use(helmet())
     this.express.use(cookieParser())
     //this.express.use(express.json())
-    //this.express.use(auth)
+    this.express.use(auth)
 
     //this.server
     const ap = new ApolloServer({
       typeDefs,
-      //schema: await buildSchema({
+      //schema: await buildSchema({resolvers: [resolvers]}),
       resolvers,
-      
       context: ({ req, res }: any) => ({ req, res })
     })
  

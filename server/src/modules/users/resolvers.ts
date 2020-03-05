@@ -23,7 +23,7 @@ interface iUser {
 }
 /*
 @ObjectType()
-class Recipe {
+class User {
   @Field()
   token: string;
   
@@ -45,11 +45,12 @@ class Recipe {
 
 //@Resolver()
 class UserModule {
-  //@Query(returns => Recipe, { nullable: true })
-  //@UseMiddleware(auth)
   async me(_, { req }) {
-    //req.userId = 1
-    return await User.findOne(1)
+    if(!req) {
+      throw Error('You are not authenticated!')
+    }
+    
+    return await User.findOne(req.userId)
   }
   
   async register(_, { email, password }) {

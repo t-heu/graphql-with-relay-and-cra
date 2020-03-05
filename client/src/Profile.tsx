@@ -8,14 +8,14 @@ type Props = {
 }*/
 
 const fra = graphql`
-  fragment Dash_user on User {
+  fragment Profile_user on User {
     email
     id
   }
 `;
 
 //class Dash extends React.Component<Props> {
-export default function Dash(props: any) {
+export default function Profile(props: any) {
   const user = useFragment(fra, props.user.me)
   return (
     <li>

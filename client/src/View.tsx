@@ -3,12 +3,12 @@ import React from 'react';
 import { graphql } from "babel-plugin-relay/macro";
 import { useQuery } from 'relay-hooks';
 
-import Dash from './Dash'
+import Profile from './Profile'
 
 const query = graphql`
   query ViewQuery {
     me {
-      ...Dash_user
+      ...Profile_user
     }
   }
 `
@@ -20,10 +20,10 @@ const options: any = {
   networkCacheConfig: undefined,
 }
 
-const View = function (viewProps: any)  {
+const View = function()  {
   const {props, error} = useQuery(query, {}, options)
   if (props) {
-    return <Dash user={props} />;
+    return <Profile user={props} />;
   } else if (error) {
     return <div>{error.message}</div>;
   }

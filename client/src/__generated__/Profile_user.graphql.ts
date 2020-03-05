@@ -3,22 +3,22 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Dash_user = {
+export type Profile_user = {
     readonly email: string;
     readonly id: string;
-    readonly " $refType": "Dash_user";
+    readonly " $refType": "Profile_user";
 };
-export type Dash_user$data = Dash_user;
-export type Dash_user$key = {
-    readonly " $data"?: Dash_user$data;
-    readonly " $fragmentRefs": FragmentRefs<"Dash_user">;
+export type Profile_user$data = Profile_user;
+export type Profile_user$key = {
+    readonly " $data"?: Profile_user$data;
+    readonly " $fragmentRefs": FragmentRefs<"Profile_user">;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Dash_user",
+  "name": "Profile_user",
   "type": "User",
   "metadata": null,
   "argumentDefinitions": [],
@@ -39,5 +39,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '6f724319dd5c4dbb448c068eb2ca87cf';
+(node as any).hash = '8b156a3e224c632837d5ce245e351f79';
 export default node;

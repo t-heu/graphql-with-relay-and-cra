@@ -1,13 +1,13 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 3ce331c9a621b2d9699972a6a25cebda */
+/* @relayHash f46e8649f6e5719821729faf31a3a7bd */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ViewQueryVariables = {};
 export type ViewQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"Dash_user">;
+        readonly " $fragmentRefs": FragmentRefs<"Profile_user">;
     } | null;
 };
 export type ViewQuery = {
@@ -20,12 +20,12 @@ export type ViewQuery = {
 /*
 query ViewQuery {
   me {
-    ...Dash_user
+    ...Profile_user
     id
   }
 }
 
-fragment Dash_user on User {
+fragment Profile_user on User {
   email
   id
 }
@@ -51,7 +51,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Dash_user",
+            "name": "Profile_user",
             "args": null
           }
         ]
@@ -94,9 +94,9 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "ViewQuery",
     "id": null,
-    "text": "query ViewQuery {\n  me {\n    ...Dash_user\n    id\n  }\n}\n\nfragment Dash_user on User {\n  email\n  id\n}\n",
+    "text": "query ViewQuery {\n  me {\n    ...Profile_user\n    id\n  }\n}\n\nfragment Profile_user on User {\n  email\n  id\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = '0536f30650471dcd8f6b834671e91c29';
+(node as any).hash = '7d9381c9eecfb96a0d4e1d0207e18b51';
 export default node;
