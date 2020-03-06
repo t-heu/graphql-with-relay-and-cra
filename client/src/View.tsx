@@ -13,8 +13,6 @@ const query = graphql`
   }
 `
 
-//const variables = {} 
-
 const options: any = {
   fetchPolicy: 'store-or-network', //default
   networkCacheConfig: undefined,

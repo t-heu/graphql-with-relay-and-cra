@@ -20,10 +20,10 @@ function fetchQuery(operation: any, variables: any) {
 const source = new RecordSource();
 const store = new Store(source);
 const network = Network.create(fetchQuery);
-const handlerProvider = null;
+//const handlerProvider = null;
 
 const environment = new Environment({
-  handlerProvider, // Can omit.
+  //handlerProvider, // Can omit.
   network,
   store,
 });
