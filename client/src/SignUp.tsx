@@ -4,14 +4,11 @@ import { useMutation } from 'relay-hooks'
 
 const query = graphql`
   mutation SignInMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      email
-    }
+    register(email: $email, password: $password)
   }
 `
 
-function SignIn() {
+function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [data, setData] = useState({})
@@ -26,11 +23,8 @@ function SignIn() {
     );
     
   function render(data: any) {
-    if(data.login.token) {
-      localStorage.setItem('@key', data.login.token)
-    }
     return (
-      <p>{data.login.email}</p>
+      <p>{data.register}</p>
     )
   } 
    
@@ -38,7 +32,7 @@ function SignIn() {
     <>
       <div>
       {loading ? (
-        <h1>loading...</h1>
+        <h3>loading...</h3>
       ) : (
         <>
           <input type="text" onChange={e => setEmail(e.target.value)} />
@@ -47,8 +41,8 @@ function SignIn() {
             onClick={() => {
               mutate({
                 variables: {
-                  email,//: 'dd', 
-                  password//: '123' 
+                  email, 
+                  password
                 },
               });
             }}
@@ -66,4 +60,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export default SignUp
