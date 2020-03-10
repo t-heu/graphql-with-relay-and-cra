@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
 const token = localStorage.getItem('@key')
-// Define a function that fetches the results of an operation (query/mutation/etc)
+// Define a function that fetches the results of an operation (query/mutation/etc) 
 // and returns its results as a Promise:
 function fetchQuery(operation: any, variables: any) {
   // eslint-disable-next-line

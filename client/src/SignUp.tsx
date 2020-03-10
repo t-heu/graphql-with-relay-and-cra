@@ -3,7 +3,7 @@ import { graphql } from "babel-plugin-relay/macro"
 import { useMutation } from 'relay-hooks'
 
 const query = graphql`
-  mutation SignInMutation($email: String!, $password: String!) {
+  mutation SignUpMutation($email: String!, $password: String!) {
     register(email: $email, password: $password)
   }
 `

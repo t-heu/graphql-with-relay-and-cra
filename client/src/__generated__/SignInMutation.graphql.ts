@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 5418e0dc0011f75f92477a51e2059735 */
+/* @relayHash 20aba3087dae418bd53c1f033ca283d8 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type SignInMutationVariables = {
@@ -10,6 +10,7 @@ export type SignInMutationVariables = {
 export type SignInMutationResponse = {
     readonly login: {
         readonly token: string | null;
+        readonly email: string;
     } | null;
 };
 export type SignInMutation = {
@@ -26,6 +27,7 @@ mutation SignInMutation(
 ) {
   login(email: $email, password: $password) {
     token
+    email
     id
   }
 }
@@ -64,6 +66,13 @@ v2 = {
   "name": "token",
   "args": null,
   "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "email",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
@@ -83,7 +92,8 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          (v2/*: any*/)
+          (v2/*: any*/),
+          (v3/*: any*/)
         ]
       }
     ]
@@ -103,6 +113,7 @@ return {
         "plural": false,
         "selections": [
           (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -118,10 +129,10 @@ return {
     "operationKind": "mutation",
     "name": "SignInMutation",
     "id": null,
-    "text": "mutation SignInMutation(\n  $email: String!\n  $password: String!\n) {\n  login(email: $email, password: $password) {\n    token\n    id\n  }\n}\n",
+    "text": "mutation SignInMutation(\n  $email: String!\n  $password: String!\n) {\n  login(email: $email, password: $password) {\n    token\n    email\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '804d10529b805f7d058d97167f3dc8e5';
+(node as any).hash = '9f608ab93a5fcb7f7ca64b5126a6d1a3';
 export default node;
