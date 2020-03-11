@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "relay": "relay-compiler --src ./src --schema scripts/schema.graphql --language typescript --artifactDirectory ./src/__generated__",
+    "relay": "relay-compiler --src ./src --schema scripts/schema.graphql --language typescript --artifactDirectory ./src/components/__generated__",
     "fetch": "node scripts/getSchema.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

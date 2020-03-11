@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import SignIn from '../SignIn'
-import SignUp from '../SignUp'
-import View from '../View'
+import SignIn from '../components/SignIn'
+import SignUp from '../components/SignUp'
+import ViewProfile from '../components/ViewProfile'
 
 function Routes() {
   return (
@@ -11,7 +11,7 @@ function Routes() {
       <Switch>
         <Route exact path="/" component={SignIn} />
         <Route path="/register" component={SignUp} />
-        <Route path="/dash" component={View} />
+        <Route path="/profile" component={ViewProfile} />
       </Switch>
     </BrowserRouter>
   )

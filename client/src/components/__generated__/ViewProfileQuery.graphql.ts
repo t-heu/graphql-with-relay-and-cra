@@ -1,24 +1,24 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash f46e8649f6e5719821729faf31a3a7bd */
+/* @relayHash b68421dd7643232dac00d1c65b2ae362 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type ViewQueryVariables = {};
-export type ViewQueryResponse = {
+export type ViewProfileQueryVariables = {};
+export type ViewProfileQueryResponse = {
     readonly me: {
         readonly " $fragmentRefs": FragmentRefs<"Profile_user">;
     } | null;
 };
-export type ViewQuery = {
-    readonly response: ViewQueryResponse;
-    readonly variables: ViewQueryVariables;
+export type ViewProfileQuery = {
+    readonly response: ViewProfileQueryResponse;
+    readonly variables: ViewProfileQueryVariables;
 };
 
 
 
 /*
-query ViewQuery {
+query ViewProfileQuery {
   me {
     ...Profile_user
     id
@@ -35,7 +35,7 @@ const node: ConcreteRequest = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "ViewQuery",
+    "name": "ViewProfileQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -60,7 +60,7 @@ const node: ConcreteRequest = {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ViewQuery",
+    "name": "ViewProfileQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -92,11 +92,11 @@ const node: ConcreteRequest = {
   },
   "params": {
     "operationKind": "query",
-    "name": "ViewQuery",
+    "name": "ViewProfileQuery",
     "id": null,
-    "text": "query ViewQuery {\n  me {\n    ...Profile_user\n    id\n  }\n}\n\nfragment Profile_user on User {\n  email\n  id\n}\n",
+    "text": "query ViewProfileQuery {\n  me {\n    ...Profile_user\n    id\n  }\n}\n\nfragment Profile_user on User {\n  email\n  id\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = '7d9381c9eecfb96a0d4e1d0207e18b51';
+(node as any).hash = '9182898ee848f7d77f40df10abe5016c';
 export default node;

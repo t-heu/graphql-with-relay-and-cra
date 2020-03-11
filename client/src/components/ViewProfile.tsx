@@ -6,7 +6,7 @@ import { useQuery } from 'relay-hooks';
 import Profile from './Profile'
 
 const query = graphql`
-  query ViewQuery {
+  query ViewProfileQuery {
     me {
       ...Profile_user
     }
@@ -18,7 +18,7 @@ const options: any = {
   networkCacheConfig: undefined,
 }
 
-const View = function()  {
+const ViewProfile = function()  {
   const {props, error} = useQuery(query, {}, options)
   if (props) {
     return <Profile user={props} />;
@@ -28,4 +28,4 @@ const View = function()  {
   return <div>loading</div>;
 }
 
-export default View
+export default ViewProfile
