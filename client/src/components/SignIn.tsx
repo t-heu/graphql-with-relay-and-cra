@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { graphql } from "babel-plugin-relay/macro"
 import { useMutation } from 'relay-hooks'
 
@@ -15,55 +15,54 @@ function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [data, setData] = useState({})
-  const [tr, setTr] = useState(false)
-  const [mutate, { loading }] = useMutation(query,
+  const [loa, setLoa] = useState(false)
+  const [mutate/*, { loading }*/] = useMutation(query,
       {
         onCompleted: (myMutation) => {
           setData(myMutation)
-          setTr(true)
+          setLoa(true)
         },
       },
     );
-    
-  function render(data: any) {
-    if(data.login.token) {
-      localStorage.setItem('@key', data.login.token)
-    }
-    return (
-      <p>{data.login.email}</p>
-    )
-  } 
    
   return (
-    <>
-      <div>
-      {loading ? (
-        <h1>loading...</h1>
-      ) : (
-        <>
+    <Suspense fallback={<h1>Loading profile...</h1>}>
+      { !loa ? (
+        <div>
           <input type="text" onChange={e => setEmail(e.target.value)} />
           <input type="text" onChange={e => setPassword(e.target.value)} /><br />
           <button
             onClick={() => {
               mutate({
                 variables: {
-                  email,//: 'dd', 
-                  password//: '123' 
+                  email,
+                  password
                 },
               });
             }}
           >
             submit
           </button>
-        </>
+       
+        </div>
+      ) : (
+        <div>
+          <Suspense fallback={<h1>Loading profile...</h1>}>
+            <Fa data={data} />
+          </Suspense>
+        </div>
       )}
-      </div>
-      
-      <div>
-        {tr ? render(data) : 'vazio'}
-      </div>
-    </>
+    </Suspense>
   )
+}
+
+interface MyModel {
+  data: {
+  login?: { email: string }}
+}
+
+function Fa({data}: any) {
+  return <p>{data.login.email}</p>;
 }
 
 export default SignIn

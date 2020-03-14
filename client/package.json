@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "babel-plugin-relay": "^9.0.0",
     "graphql": "^14.6.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "react-relay": "^9.0.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "@types/node": "^12.12.27",
-    "@types/react": "^16.9.19",
+    "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "@types/react-relay": "^7.0.3",
     "@types/react-router-dom": "^5.1.3",
@@ -28,8 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "relay": "relay-compiler --src ./src --schema scripts/schema.graphql --language typescript --artifactDirectory ./src/components/__generated__",
-    "fetch": "node scripts/getSchema.js",
+    "relay": "relay-compiler --src ./src --schema schema/schema.graphql --language typescript --artifactDirectory ./src/components/__generated__",
+    "fetch": "node schema/getSchema.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

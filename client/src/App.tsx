@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react';
 
-//import View from './View'
-//import SignIn from './SignIn'
-import Routes from './routes'
+import { RelayEnvironmentProvider } from 'relay-hooks';
+
+import environment from './Environment'
+
+const Routes = React.lazy(() => import('./routes'))
 
 function App() {
   return (
-    <div className="App">
-      <Routes />
-    </div>
+    <RelayEnvironmentProvider environment={environment}>
+      <Suspense fallback={<h5>Oops</h5>}>
+        <Routes />
+      </Suspense>
+    </RelayEnvironmentProvider>
   );
 }
 
