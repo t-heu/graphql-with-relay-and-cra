@@ -13,8 +13,9 @@ const auth = <MyContext>(req, res, next) => {
   try {
     const [, token] = authorization.split(' ')
     const data = verify(token, ACCESS_TOKEN_SECRET) as any;
-    
+    //console.log(data)
     (req as any).userId = data.userId
+    
     return next()
   } catch (err) {
     console.log(err)

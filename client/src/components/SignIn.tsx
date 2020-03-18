@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import { graphql } from "babel-plugin-relay/macro"
 import { useMutation } from 'relay-hooks'
 
@@ -11,58 +11,62 @@ const query = graphql`
   }
 `
 
-function SignIn() {
+interface MyModel {
+  login?: { token: string }
+}
+
+function SignIn({history}: any) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [data, setData] = useState({})
-  const [loa, setLoa] = useState(false)
-  const [mutate/*, { loading }*/] = useMutation(query,
+  //const [loa, setLoa] = useState(false)
+  const [mutate, { loading }] = useMutation(query,
       {
-        onCompleted: (myMutation) => {
-          setData(myMutation)
-          setLoa(true)
+        onCompleted: (myMutation: MyModel) => {
+          //setData(myMutation)
+          //setLoa(true)
+          
+          if(myMutation.login) {
+            localStorage.setItem('@key', myMutation.login.token)
+          }
+          history.push('/profile')
         },
       },
     );
    
+  function handleClick(e: any) {
+    e.preventDefault()
+    mutate({
+      variables: {
+        email,
+        password
+      }
+    });
+  }
+   
   return (
-    <Suspense fallback={<h1>Loading profile...</h1>}>
-      { !loa ? (
-        <div>
+    <>
+      { !loading ? (
+        <form>
           <input type="text" onChange={e => setEmail(e.target.value)} />
           <input type="text" onChange={e => setPassword(e.target.value)} /><br />
-          <button
-            onClick={() => {
-              mutate({
-                variables: {
-                  email,
-                  password
-                },
-              });
-            }}
-          >
+          <button onClick={(e) => handleClick(e)}>
             submit
           </button>
-       
-        </div>
+        </form>
       ) : (
         <div>
-          <Suspense fallback={<h1>Loading profile...</h1>}>
-            <Fa data={data} />
-          </Suspense>
+          <h3>loading</h3>
+          {/*<Fa data={data} />*/}
         </div>
       )}
-    </Suspense>
+    </>
   )
 }
 
-interface MyModel {
-  data: {
-  login?: { email: string }}
-}
-
+/*
 function Fa({data}: any) {
   return <p>{data.login.email}</p>;
-}
+}*/
 
 export default SignIn

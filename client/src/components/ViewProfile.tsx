@@ -21,6 +21,7 @@ const options: any = {
 const ViewProfile = function()  {
   const {props, error} = useQuery(query, {}, options)
   if (props) {
+    //alert(JSON.stringify(props))
     return <Profile user={props} />;
   } else if (error) {
     return <div>{error.message}</div>;

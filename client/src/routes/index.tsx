@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 const SignIn = lazy(() => import('../components/SignIn'));
 const SignUp = lazy(() => import('../components/SignUp'));
 const ViewProfile = lazy(() => import('../components/ViewProfile'));
+const Home = lazy(() => import('../components/Home'));
 //import SignIn from '../components/SignIn'
 //import SignUp from '../components/SignUp'
 //import ViewProfile from '../components/ViewProfile'
@@ -13,8 +14,9 @@ function Routes() {
     <Router>
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
-        <Route exact path="/" component={SignIn} />
-        <Route path="/register" component={SignUp} />
+        <Route exact path="/" component={Home} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/profile" component={ViewProfile} />
       </Switch>
       </Suspense>

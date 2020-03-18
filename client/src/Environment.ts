@@ -3,7 +3,6 @@ import {
   Network, 
   RecordSource, 
   Store,
-  //RequestNode,
   Variables } from 'relay-runtime';
 
 const token = localStorage.getItem('@key')
@@ -14,7 +13,7 @@ function fetchQuery(operation: any,
   return fetch('http://localhost:4000/graphql', {
     method: 'POST',
     headers: {
-      "Authorization": `bearer ${token}`,
+      'Authorization': `bearer ${token}` ,
       'content-type': 'application/json',
     },
     body: JSON.stringify({
@@ -24,8 +23,6 @@ function fetchQuery(operation: any,
   })
   .then(response => response.json())
   .then((data) => data)
-  
-  //return wrapPromise(promise)
 }
 
 const source = new RecordSource();
