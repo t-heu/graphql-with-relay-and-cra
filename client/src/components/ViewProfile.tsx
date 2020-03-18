@@ -1,5 +1,4 @@
 import React from 'react';
-//import {QueryRenderer} from 'react-relay';
 import { graphql } from "babel-plugin-relay/macro";
 import { useQuery } from 'relay-hooks';
 
@@ -20,13 +19,13 @@ const options: any = {
 
 const ViewProfile = function()  {
   const {props, error} = useQuery(query, {}, options)
+  //alert(JSON.stringify(props))
   if (props) {
-    //alert(JSON.stringify(props))
     return <Profile user={props} />;
   } else if (error) {
     return <div>{error.message}</div>;
   }
-  return <div>loading</div>;
+  return <div>loading...</div>;
 }
 
 export default ViewProfile

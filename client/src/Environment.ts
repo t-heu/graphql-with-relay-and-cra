@@ -6,6 +6,7 @@ import {
   Variables } from 'relay-runtime';
 
 const token = localStorage.getItem('@key')
+const tok = !token ? null : `bearer ${token}`;
 
 function fetchQuery(operation: any,
   variables: Variables) {
@@ -13,7 +14,7 @@ function fetchQuery(operation: any,
   return fetch('http://localhost:4000/graphql', {
     method: 'POST',
     headers: {
-      'Authorization': `bearer ${token}` ,
+      'Authorization': `${tok}`,
       'content-type': 'application/json',
     },
     body: JSON.stringify({
