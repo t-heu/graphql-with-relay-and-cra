@@ -11,30 +11,24 @@ const query = graphql`
 function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [data, setData] = useState({})
+ 
   const [tr, setTr] = useState(false)
   const [mutate, { loading }] = useMutation(query,
       {
         onCompleted: (myMutation) => {
-          setData(myMutation)
           setTr(true)
         },
       },
     );
-    
-  function render(data: any) {
-    return (
-      <p>{data.register}</p>
-    )
-  } 
    
   return (
     <>
-      <div>
+      <div className="log">
       {loading ? (
         <h3>loading...</h3>
       ) : (
-        <>
+        <form>
+          <h2>signup</h2>
           <input type="text" onChange={e => setEmail(e.target.value)} />
           <input type="text" onChange={e => setPassword(e.target.value)} /><br />
           <button
@@ -49,12 +43,12 @@ function SignUp() {
           >
             submit
           </button>
-        </>
+        </form>
       )}
       </div>
       
       <div>
-        {tr ? render(data) : 'vazio'}
+        {tr ? 'create successul' : ''}
       </div>
     </>
   )

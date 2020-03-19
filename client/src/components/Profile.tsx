@@ -1,10 +1,7 @@
+// colocation
 import React from 'react';
 import { graphql } from "babel-plugin-relay/macro"
 import { useFragment } from 'relay-hooks';
-/*
-type Props = {
-  dash: any//Todo_todo
-}*/
 
 const fra = graphql`
   fragment Profile_user on User {
@@ -13,19 +10,24 @@ const fra = graphql`
   }
 `;
 
-//class Dash extends React.Component<Props> {
 export default function Profile(props: any) {
   const user = useFragment(fra, props.user.me)
   return (
-    <li>
-      <div>
-        <label>
-          {user.email}
-        </label>
-      </div>
-    </li>
+    <div>
+      <p>
+        seu email: {user.email}
+      </p>
+    </div>
   );
 }
+
+/*
+type Props = {
+  dash: any//Todo_todo
+}*/
+
+//class Dash extends React.Component<Props> {}
+
 /*
 export default createFragmentContainer(
   Dash,

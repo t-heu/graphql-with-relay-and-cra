@@ -42,9 +42,10 @@ function SignIn({history}: any) {
   }
    
   return (
-    <>
+    <div className="log">
       { !loading ? (
         <form>
+          <h2>signin</h2>
           <input type="text" onChange={e => setEmail(e.target.value)} />
           <input type="text" onChange={e => setPassword(e.target.value)} /><br />
           <button onClick={(e) => handleClick(e)}>
@@ -56,7 +57,7 @@ function SignIn({history}: any) {
           <h3>loading</h3>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

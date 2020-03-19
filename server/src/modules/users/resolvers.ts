@@ -45,8 +45,7 @@ class User {
 
 //@Resolver()
 class UserModule {
-  async me(_, req ) {
-    console.log(req)
+  async me(_, req) {
     if(!req) {
       throw Error('You are not authenticated!')
     }

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
-
 import { RelayEnvironmentProvider } from 'relay-hooks';
 
+import './App.css'
 import environment from './Environment'
 
 const Routes = React.lazy(() => import('./routes'))
