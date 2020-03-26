@@ -14,6 +14,7 @@ interface iUser {
 
 class UserModule {
   async me(_, root, { req }: any) {
+    console.log(req.cookies)
     if(!auth(req.cookies['access-token'])) {
       throw Error('You are not authenticated!')
     }

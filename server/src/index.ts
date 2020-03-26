@@ -25,8 +25,11 @@ class App {
     await createConnection();
   }
   
-  private async middlewares(): void {
-    this.express.use(cors())
+  private async middlewares(): Promise<any> {
+    this.express.use(cors({
+      origin: 'http://localhost:3000',
+      credentials: true
+    }))
     this.express.use(helmet())
     this.express.use(cookieParser())
     this.express.use(express.json())
