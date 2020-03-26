@@ -18,8 +18,6 @@ export type SignInMutation = {
     readonly variables: SignInMutationVariables;
 };
 
-
-
 /*
 mutation SignInMutation(
   $email: String!

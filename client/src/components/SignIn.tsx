@@ -15,9 +15,9 @@ interface MyModel {
 }
 
 function SignIn({history}: any) {
+  //alert(JSON.stringify(props))
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [data, setData] = useState({})
   
   const [mutate, { loading }] = useMutation(query,
       {

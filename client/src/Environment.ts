@@ -4,6 +4,7 @@ import {
   RecordSource, 
   Store,
   Variables } from 'relay-runtime';
+import {commitLocalUpdate} from 'react-relay';
 
 const token = localStorage.getItem('@key')
 const tok = !token ? null : `bearer ${token}`;
@@ -30,12 +31,15 @@ const source = new RecordSource();
 const store = new Store(source);
 let network = Network.create(fetchQuery)
 
-//const handlerProvider = null;
-
 const environment = new Environment({
-  //handlerProvider, // Can omit.
   network,
   store,
+})
+
+// State Management \\
+// cria variavel e seta valor
+commitLocalUpdate(environment, store => {
+  store.getRoot().setValue("g", "localValue");
 });
 
 export default environment;
