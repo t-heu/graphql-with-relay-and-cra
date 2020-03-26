@@ -14,27 +14,28 @@ interface iUser {
 
 class SessionModule {
   async login (_, { email, password }, { res }) {
-      const user = await <iUser > User.findOne({ where: { email } });
+    const user = await <iUser > User.findOne({ where: { email } });
 
-      if (!user) {
-        throw new Error('user not exist')
-      }
+    if (!user) {
+      throw new Error('user not exist')
+    }
 
-      const valid = await bcrypt.compare(password, user.password as string);
+    const valid = await bcrypt.compare(password, user.password as string);
 
-      if (!valid) {
-        throw new Error('password wrong')
-      }
+    if (!valid) {
+      throw new Error('password wrong')
+    }
 
-      const accessToken = sign({ userId: user.id }, ACCESS_TOKEN_SECRET, {
-        expiresIn: EXPIRES_IN
-      });
+    const accessToken = sign({ userId: user.id }, ACCESS_TOKEN_SECRET, {
+      expiresIn: EXPIRES_IN
+    });
 
-      user!.token = accessToken
+    user!.token = accessToken
 
-      if (process.env.NODE_ENV !== 'test') res.cookie("access-token", accessToken, { maxAge: 60 * 60 * 24 * 7, httpOnly: true })
+      //if (process.env.NODE_ENV !== 'test') 
+    res.cookie("access-token", accessToken, { maxAge: 60 * 60 * 24 * 7, httpOnly: true })
 
-      return user;
+    return user;
   }
 }
 

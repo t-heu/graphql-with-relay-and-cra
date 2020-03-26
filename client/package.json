@@ -22,14 +22,13 @@
     "@types/react-relay": "^7.0.3",
     "@types/react-router-dom": "^5.1.3",
     "@types/relay-runtime": "^8.0.6",
-    "graphql-compiler": "^1.7.0",
     "relay-compiler-language-typescript": "^12.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "relay": "relay-compiler --src ./src --schema schema/schema.graphql --language typescript --artifactDirectory ./src/components/__generated__",
-    "fetch": "node schema/getSchema.js",
+    "relay": "relay-compiler --src ./src --schema schema.graphql --language typescript --artifactDirectory ./src/components/__generated__",
+    "fetch": "get-graphql-schema http://localhost:4000/graphql > schema.graphql",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

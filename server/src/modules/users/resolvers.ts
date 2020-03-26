@@ -1,19 +1,9 @@
 import * as bcrypt from "bcryptjs";
-/*import {
-  Resolver,
-  Query,
-  Mutation,
-  Arg,
-  ObjectType,
-  Field,
-  Ctx,
-  UseMiddleware,
-  Int
-} from "type-graphql";*/
 
 import { User } from "../../entity/User";
-import auth from "../../middlewares/auth"
+
 //import { MyContext } from "../../MyContext"
+import auth from '../../middlewares/auth'
 
 interface iUser {
   token?: string
@@ -21,32 +11,10 @@ interface iUser {
   count?: number
   id?: number
 }
-/*
-@ObjectType()
-class User {
-  @Field()
-  token: string;
-  
-  @Field()
-  count: number;
-  
-  @Field()
-  id: number;
-  
-  @Field()
-  email: string;
-  
-  @Field()
-  password: string
-  
-  //@Field(() => User)
-  //User
-}*/
 
-//@Resolver()
 class UserModule {
-  async me(_, req) {
-    if(!req) {
+  async me(_, root, { req }: any) {
+    if(!auth(req.cookies['access-token'])) {
       throw Error('You are not authenticated!')
     }
     

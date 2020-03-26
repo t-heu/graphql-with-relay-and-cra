@@ -1,8 +1,4 @@
 import "reflect-metadata";
-/*import dotenv from 'dotenv'
-dotenv.config({
-  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
-})*/
 import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
 import * as express from "express";
@@ -10,9 +6,9 @@ import * as helmet from "helmet"
 import * as cors from "cors"
 import * as cookieParser from "cookie-parser";
 
+import routes from './routes'
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./modules";
-import auth from './middlewares/auth'
 
 class App {
   public express: express.Application
@@ -33,10 +29,9 @@ class App {
     this.express.use(cors())
     this.express.use(helmet())
     this.express.use(cookieParser())
-    //this.express.use(express.json())
-    this.express.use(auth)
+    this.express.use(express.json())
+    this.express.use('/api', routes)
 
-    //this.server
     const ap = new ApolloServer({
       typeDefs,
       resolvers,
