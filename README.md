@@ -1,16 +1,17 @@
-# Graphql with relay and CRA
-webservice
+# webservice created with graphql and UI created with relay and CRA
 
-## ferramentas usadas:
+## ferramentas usadas no frontend:
 - TypeScript
-- Jest/TDD
 - React
-- Apollo
-- Express
 - Relay
-- Graphql
+- Cookie
+
+## ferramentas usadas no backend
+- graphql
 - JWT
 - Typeorm
+- express
+- apollo
 
 structure used
 [colocation](https://pt-br.reactjs.org/docs/faq-structure.html)
