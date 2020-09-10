@@ -21,7 +21,8 @@ export const typeDefs = gql`
 `;
 
 /*
-fragmento so funciona em graphiql(playground) ele server como uma forma de evitar repetições em blocos
+ *fragmento so funciona em graphiql(playground) ele server como uma forma de evitar repetições em blocos
+exemplo de uso
 fragment Dash on User {
   email
   id

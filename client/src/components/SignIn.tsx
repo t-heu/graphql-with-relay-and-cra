@@ -43,7 +43,7 @@ function SignIn({history}: any) {
    
   return (
     <div className="log">
-      { !loading ? (
+      {!loading ? (
         <form>
           <h2>signin</h2>
           <input type="text" onChange={e => setEmail(e.target.value)} />

@@ -1,8 +1,7 @@
 import * as bcrypt from "bcryptjs";
+import { Request } from 'express';
 
 import { User } from "../../entity/User";
-
-//import { MyContext } from "../../MyContext"
 import auth from '../../middlewares/auth'
 
 interface iUser {
@@ -12,17 +11,18 @@ interface iUser {
   id?: number
 }
 
+interface IReq {
+  req: Request
+}
+
 class UserModule {
-  async me(_, root, { req }: any) {
-    console.log(req.cookies)
-    if(!auth(req.cookies['access-token'])) {
-      throw Error('You are not authenticated!')
-    }
+  async me(_: any, root: any, { req }: IReq) {
+    const id = auth(req) as string
     
-    return await User.findOne(req.userId)
+    return await User.findOne(id)
   }
   
-  async register(_, { email, password }) {
+  async register(_: any, { email, password }: any) {
     const user = await <iUser>User.findOne({ where: { email } });
       
     if (user) {
@@ -38,16 +38,6 @@ class UserModule {
 
     return true;
   }
-    
-  /*async update(_, {}, { res }) {
-  
-    return ['update']
-  },
-    
-  async delete(_, {}, { res }) {
-  
-    return ['delete']
-  }*/
 };
 
 export default new UserModule()

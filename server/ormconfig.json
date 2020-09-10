@@ -1,10 +1,4 @@
 {
-  "type": "postgres",
-  "host": "salt.db.elephantsql.com",
-  "port": "",
-  "username": "ciyieeng",
-  "password": "XmKd8WK1Ednr35gwCCV-wjIrneCOPwH5",
-  "database": "ciyieeng",
   "synchronize": true,
   "logging": false,
   "entities": ["src/entity/**/*.ts"],

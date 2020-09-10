@@ -6,17 +6,15 @@ import {
   Variables } from 'relay-runtime';
 import {commitLocalUpdate} from 'react-relay';
 
-//const token = localStorage.getItem('@key')
-//const tok = !token ? null : `bearer ${token}`;
+const token = localStorage.getItem('@key')
 
 function fetchQuery(operation: any,
   variables: Variables) {
-  // eslint-disable-next-line
-  return fetch('http://localhost:5000/graphql', {
+  return fetch('http://localhost:3333/graphql', {
     method: 'POST',
     credentials: 'include',
     headers: {
-      //'Authorization': `${tok}`,
+      'Authorization': `${token ? `Bearer ${token}` : null}`,
       'content-type': 'application/json',
     },
     body: JSON.stringify({

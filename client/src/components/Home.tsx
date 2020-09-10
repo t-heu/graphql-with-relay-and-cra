@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import { ROOT_ID } from "relay-runtime";
 import environment from "../Environment";
 
-//type localValue: string
-interface Sto {
-  localValue: string
-}
 // pega valor fora
 const dat = environment
 	.getStore()
